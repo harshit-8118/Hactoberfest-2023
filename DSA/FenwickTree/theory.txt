@@ -1,0 +1,12 @@
+for 0-indexed =>
+
+operation::
+child to parent - (a | (a + 1));
+parent to child - (a & (a + 1)) - 1;
+
+
+for 1-indexed =>
+
+operation::
+child to parent - (a += (a & -a))
+parent to child - (a -= (a & -a))
