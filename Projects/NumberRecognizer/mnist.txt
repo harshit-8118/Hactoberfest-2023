@@ -1,0 +1,1 @@
+mnist can be downloaded from here :: https://www.kaggle.com/datasets/hojjatk/mnist-dataset
