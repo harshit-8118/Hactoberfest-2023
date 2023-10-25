@@ -1,0 +1,327 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"modPowerFunc:": {
+		"prefix": "modPow",
+		"body": [
+			"template <class T, class V> T modPow(T a, V b, const ll &M) {",
+			"    T res = 1;",
+			"    a %= M;",
+			"    for(; b; b >>= 1, a = a * 1ll * a % M)",
+			"        if(b & 1) res = res * 1ll * a % M;",
+			"    return res;",
+			"}",
+			""
+		]
+	},
+	"factors:": {
+		"prefix": "factorsall",
+		"body": [
+			"template<class T> vector<T> findfact(T n){",
+			"    vector<T> v;",
+			"    for(T i = 1; i*i <= n; i++)",
+			"        if(n%i == 0){",
+			"            v.push_back(i); ",
+			"            if(i != n/i)    v.push_back(n/i);",
+			"        }",
+			"    sort(all(v));",
+			"    return v;",
+			"}",
+			""
+		]
+	},
+	"prime factors:": {
+		"prefix": "factorsprime",
+		"body": [
+			"template<class T> vector<pair<T, T>> primefact(T n){",
+			"    vector<pair<T, T>> v;",
+			"    for (T i = 2; i * i <= n; i++)",
+			"        if (n % i == 0){",
+			"        v.push_back({i, 1});",
+			"        while ((n /= i) % i == 0)  v.back().second++;",
+			"        }",
+			"    if (n > 1)",
+			"        v.push_back({n, 1});",
+			"    return v;",
+			"}",
+			""
+		]
+	},
+	"check prime O(root n):": {
+		"prefix": "isprime",
+		"body": [
+			"template<class T> bool isprime(T n){",
+			"  if(n <= 1) return false;",
+			"  for(T i = 2; i * i <= n; i++){",
+			"    if(n%i == 0)",
+			"      return false;",
+			"  }",
+			"  return true;",
+			"}",
+			""
+		]
+	},
+	"rotate matrix 90deg": {
+		"prefix": "rotate",
+		"body": [
+			"template<class T> rotate(vector<vector<T>> &a){",
+			"    int m = a.size(), n = a[0].size();",
+			"    vector<vector<T>> c(m, vector<T>(n));",
+			"    forf(i, 0, m) forf(j, 0, n) c[i][j] = a[m - 1 - j][i];",
+			"    swap(a, c);",
+			"}",
+			""
+		]
+	},
+	"check prime logn:": {
+		"prefix": "isprimeMiller",
+		"body": [
+			"template<class T> T binpow(T a, T b, T m){",
+			"  T ans = 1;",
+			"  a = a%m;",
+			"  while(b){",
+			"    if(b&1)      ans = (ans * 1ll * a)%m;",
+			"    a = (a * 1ll * a)%m;",
+			"    b>>=1;",
+			"  }",
+			"  return ans;",
+			"}",
+			"template<class T> bool checkcomposite(T a, T s, T d, T n){",
+			"  T x = binpow(a, d, n);",
+			"  if(x == 1 or x == n-1) return false;",
+			"  for(int r = 1; r < s; r++){",
+			"    x = (x * 1ll * x) % n;",
+			"    if(x == n - 1) return false;",
+			"  }",
+			"  return true;",
+			"}",
+			"template<class T> bool isprime(T n){",
+			"  if(n < 5)    return n == 2 or n == 3;",
+			"  T d = n - 1, s = 0;",
+			"  while(!(d&1)){",
+			"    s++;",
+			"    d >>= 1;",
+			"  }",
+			"  for(auto a: {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37}){",
+			"    if(a == n) return true;",
+			"    if(checkcomposite(a, s, d, n))      return false;",
+			"  }",
+			"  return true;",
+			"}",
+			""
+		]
+	},
+	"sieve of Erastothenis": {
+		"prefix": "sieve",
+		"body": [
+			"const int MX = 100000;",
+			"vector<int> prime(MX + 2);",
+			"",
+			"void sieve(){",
+			"    for(int i = 2; i <= MX; i++)",
+			"        prime[i] = i;",
+			"    for(int i = 2; i * i <= MX; i++){",
+			"       if(prime[i] == i){",
+			"           for(int j = i*i; j <= MX; j+=i)",
+			"               if(prime[j] == j)",
+			"                   prime[j] = i;",
+			"       }",
+			"    }",
+			"}",
+			""
+		]
+	},
+	"linear-sieve": {
+		"prefix": "sievelin",
+		"body": [
+			"const int MX = 100000;",
+			"vector<int> lp(MX + 2), pr;",
+			"",
+			"void sieve(){",
+			"    lp[0] = lp[1] = 0;",
+			"    for(int i = 2; i <= MX; i++){",
+			"        if(lp[i] == 0){",
+			"            lp[i] = i;",
+			"            pr.emplace_back(i);",
+			"        }",
+			"        for(int j = 0; i * pr[j] <= MX; j++){",
+			"            lp[i * pr[j]] = pr[j];",
+			"            if(lp[i] == pr[j])  break;",
+			"        }",
+			"    }",
+			"}",
+			""
+		]
+	},
+	"euler totient": {
+		"prefix": "phiofn",
+		"body": [
+			"int phi(int n){ // find etf of number",
+			"    int res = n;",
+			"    for(int i = 2; i * i <= n; i++){",
+			"        if(n%i == 0){",
+			"            res -= res / i;",
+			"            while(n%i == 0)",
+			"                n /= i;",
+			"        }",
+			"    }",
+			"    if(n > 1) res -= res/n;",
+			"    return res;",
+			"}",
+			""
+		]
+	},
+	"euler totient function": {
+		"prefix": "phiton",
+		"body": [
+			"int MX = 100000;",
+			"vector<int> phi(MX + 2);",
+			"",
+			"void etf(){",
+			"    for(int i = 1; i<= MX; i++)",
+			"    phi[i] = i;",
+			"    for(int i= 2; i <= MX; i++){",
+			"        if(phi[i] == i){",
+			"            for(int j = i; j <= MX; j += i){",
+			"                phi[j] -= phi[j] / i;",
+			"            }",
+			"        }",
+			"    }",
+			"}",
+			""
+		]
+	},
+	"combinotrics": {
+		"prefix": "ncr_npr",
+		"body": [
+			"struct factorial{",
+			"    private: ",
+			"    const int MX = 100000;",
+			"    const int M = 1000000007;",
+			"    template <class T, class V> T modPow(T a, V b, const ll &M) {",
+			"        T res = 1;",
+			"        a %= M;",
+			"        for(; b; b >>= 1, a = a * 1ll * a % M)",
+			"            if(b & 1) res = res * 1ll * a % M;",
+			"        return res;",
+			"    }",
+			"    void build(){",
+			"        fact[0] = 1;",
+			"        for(int i = 1; i <= MX; i++)",
+			"            fact[i] = (i * 1ll * fact[i - 1]) % M;",
+			"        invfact[MX] = modPow(fact[MX], M - 2, M);",
+			"        for(int i = MX - 1; i >= 0; i--)",
+			"            invfact[i] = (invfact[i + 1] * 1ll * (i + 1)) % M;",
+			"    }",
+			"    public:",
+			"    vector<int> fact, invfact;",
+			"    factorial(){",
+			"        fact.resize(MX + 1);",
+			"        invfact.resize(MX + 1);",
+			"        build();",
+			"    }",
+			"    int nCr(int n, int r){",
+			"        if(n < 0 or r < 0 or n - r < 0) return 0;",
+			"        return ((fact[n] * 1ll * invfact[r]) % M * 1ll * invfact[n - r]) % M;",
+			"    }",
+			"    int nPr(int n, int r){",
+			"        if(n < 0 or n < r) return 0;",
+			"        return (fact[n] * 1ll * invfact[n - r]) % M;",
+			"    }",
+			"} ff;",
+			""
+		]
+	},
+	"segmentTree": {
+		"prefix": "segmentTree",
+		"body": [
+			"class segmentTree{",
+			"  public: ",
+			"  vector<int> t, lazy; int n;",
+			"  segmentTree(vector<int> &a){",
+			"    this->n = a.size(); t.assign(4*n, 0);",
+			"    build(a, 1, 0, this->n-1);",
+			"  }",
+			"  template<class T> T operation(T a, T b){ return a + b; } ",
+			"  template<class T>  void build(vector<int> &a, T v, T tl, T tr){",
+			"    if(tl == tr){",
+			"      t[v] = a[tl];",
+			"      return;",
+			"    }T tm = (tl + tr)/2;",
+			"    build(a, v*2, tl, tm);     build(a, v*2+1, tm+1, tr);",
+			"    t[v] = operation(t[v*2], t[v*2+1]);",
+			"  }",
+			"  template<class T>  void update(T v, T tl, T tr, T p, T val){",
+			"    if(tl == tr){",
+			"      t[v] = val; return;",
+			"    }T tm = (tl + tr)/2;",
+			"    if(tm >= p)    update(v*2, tl, tm, p, val);",
+			"    else    update(v*2+1, tm+1, tr, p, val);",
+			"    t[v] = operation(t[v*2], t[v*2+1]);",
+			"  }",
+			"  template<class T>  T get_query(T v, T tl, T tr, T l, T r){",
+			"    if(tl > r || tr < l)      return 0;",
+			"    if(tr <= r and tl >= l)      return t[v];",
+			"    T tm = (tl + tr)/2;",
+			"    return operation(get_query(v*2, tl, tm, l, r), get_query(v*2+1, tm+1, tr, l, r));",
+			"  }",
+			"  template<class T> void update(T p, T val){",
+			"    update(T(1), T(0), T(n-1), p, val);",
+			"  }",
+			"  template<class T> T get_query(T l, T r){",
+			"    return get_query(T(1), T(0), T(n-1), l, r);",
+			"  }",
+			"};",
+			""
+		],
+		"description": "SegmentTree"
+	},
+	"NthFib:": {
+		"prefix": "fibo",
+		"body": [
+			"pair<int,int> NthFibonacci(int n){",
+			"    if(n == 0)",
+			"        return {0, 1};",
+			"    auto p = NthFibonacci(n>>1);",
+			"    int c = p.first * (2*p.second - p.first);",
+			"    int d = p.first * p.first + p.second * p.second;",
+			"    if(n&1)",
+			"        return {d, c + d};",
+			"    else",
+			"        return {c, d};",
+			"}",
+			"int fib(int n){",
+			"    return NthFibonacci(n).first;",
+			"}"
+		]
+	},
+	"random": {
+		"prefix": "rand_int",
+		"body": [
+			"struct rand_int_ {",
+			"    using ll = long long;",
+			"    std::mt19937 mt;",
+			"    rand_int_() : mt(std::chrono::steady_clock::now().time_since_epoch().count()) {}",
+			"    ll operator()(ll x) { return this->operator()(0, x); } // [0, x)",
+			"    ll operator()(ll l, ll r) {",
+			"        std::uniform_int_distribution<ll> d(l, r - 1);",
+			"        return d(mt);",
+			"    }",
+			"} rnd;"
+		]
+	},
+}

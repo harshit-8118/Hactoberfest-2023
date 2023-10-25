@@ -1,0 +1,110 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"yes no snippets": {
+		"prefix": "yesno",
+		"body": [
+			"void yes(){ cout<<\"Yes\"<<endl; }",
+			"void no(){ cout<<\"No\"<<endl; }",
+		]
+	},
+	"iosbase snippets": {
+		"prefix": "fastcin",
+		"body": [
+			"ios_base::sync_with_stdio(false);    cin.tie(NULL);    cout.tie(NULL);",
+		]
+	},
+	"ifndef snippets": {
+		"prefix": "ifdef",
+		"body": [
+			"#ifndef ONLINE_JUDGE     \/\/     #include \"C:/Users/hhars/OneDrive/Documents/CPP_Practice/Algo/config.h\"",
+			"    #include \"Algo\/config.h\"",
+			"#endif",
+		]
+	},
+	"while(t--)": {
+		"prefix": "cpwhile",
+		"body": [
+			"clock_t st, en;",
+			"st = clock();",
+			"",
+			"int tt = 1;",
+			"cin>>tt;",
+			"while(tt--){",
+			"  $1",
+			"}",
+			"",
+			"en = clock();",
+			"double ttime = double(en - st) / (1.0 * CLOCKS_PER_SEC);",
+			"fix(ttime);",
+		]
+	},
+	"for_each snippets": {
+		"prefix": "foreach",
+		"body": [
+			"for(auto &x: $1){",
+			"   ",
+			"}"
+		]
+	},
+	"lower<->upper": {
+		"prefix": "transform_string",
+		"body": [
+			"void strtolower(string &str){  for(auto &x: str) if(x >= 'A' && x <= 'Z') x |= ' ';  }",
+			"void strtoupper(string &str){  for(auto &x: str) if(x >= 'a' && x <= 'z') x &= '_';  }",
+			""
+		]
+	},
+	"mod": {
+		"prefix": "mod",
+		"body": [
+			"const int M = 1000000007;",
+			"",
+			"int mod(ll x, ll M){  return ((x%M + M)%M);}",
+			"int add(ll a, ll b, ll M){  return mod(mod(a, M) + mod(b, M), M);}",
+			"int mul(ll a, ll b, ll M){  return mod(1ll*mod(a, M)*mod(b, M), M);}",
+			""
+		]
+	},
+	"clock": {
+		"prefix": "clk",
+		"body": [
+			"clock_t st, en;",
+			"st = clock();",
+			"",
+			"",
+			"",
+			"en = clock();",
+			"double ttime = double(en - st) / (1.0 * CLOCKS_PER_SEC);",
+			"fix(ttime);",
+		]
+	},
+	"months": {
+		"prefix": "months",
+		"body": [
+			"int mon[] = {0,31,28,31,30,31,30,31,31,30,31,30,31};"
+		]
+	},
+	"inp2out_in_py snippets": {
+		"prefix": "sysfile",
+		"body": [
+			"import sys",
+			"sys.stdin = open('input.txt', 'r')",
+			"sys.stdout = open('output.txt', 'w')"
+		]
+	},
+}
